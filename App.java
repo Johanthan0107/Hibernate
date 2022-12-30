@@ -1,27 +1,57 @@
 package com.supriya;
+
+import java.util.ArrayList;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
-import com.supriya.entity.Student;
-import com.supriya.util.HibernateUtil;
-public class App{
- public static void main( String[] args ) {
- Session session=HibernateUtil.getSessionFactory().openSession();
 
- Student s=new Student();
- s.setSno(1);
- s.setSname("Supriya");
- s.setCourse("Java");
+import com.supriya.Entity.Book;
+import com.supriya.Util.HibernateUtil;
 
- Student s2=new Student();
- s2.setSno(2);
- s2.setSname("Supriya");
- s2.setCourse("HIBERNATE");
+public class App
+{
+ public static void main( String[] args )
+ {
+	 Session ss=HibernateUtil.getSessionFactory().openSession();
+	 ss.beginTransaction();
 
- Transaction tr=session.beginTransaction();
- //save the object
- session.save(s);
- session.save(s2);
- tr.commit();
- // close the session
- }
-}
+	 ArrayList<Book> l=new ArrayList<Book>();
+	 Book b=new Book("Adv_Java","Rechard");
+	 Book b1=new Book("Hibernate","Sathish");
+	 Book b2=new Book("Spring_Boot","Nandha Kumar");
+	 Book b3=new Book("Core_Java","Lavanya");
+
+	 l.add(b); l.add(b1); l.add(b2); l.add(b3);
+	 // save the book objects
+	 l.forEach(n->ss.save(n));
+	 //do changes
+	 b2.setAuthor("Ram");
+	 // update the Book object
+	 ss.saveOrUpdate(b2);
+	 
+	 b.setAuthor("Ravi");
+	 // update the Book object
+	 ss.saveOrUpdate(b);
+
+	 // get Book entity using get() method
+	 System.out.println("using get() method");
+	 Book book = ss.get(Book.class, 2);
+	 System.out.println("Book name: "+book.getBookName());
+	 System.out.println("Book Author: "+book.getAuthor());
+	 // get Book entity using load() method
+	 System.out.println("using load() method");
+	 Book book1 = ss.load(Book.class, 2);
+	 System.out.println("Book name: "+book1.getBookName());
+	 System.out.println("Book Author: "+book1.getAuthor());
+	 // Obtain an entity using byId() method
+	 System.out.println("using byId() method");
+	 Book book2 = ss.load(Book.class, 2);
+	 System.out.println("Book name: "+book2.getBookName());
+	 System.out.println("Book Author: "+book2.getAuthor());
+
+	 //delete a persistent Book object
+	 if(b3 !=null) {
+	 ss.delete(b3); }
+
+	 ss.getTransaction().commit();
+	 System.out.println("Txn completed");
+	 }
+	}

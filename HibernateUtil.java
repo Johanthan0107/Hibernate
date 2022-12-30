@@ -1,4 +1,4 @@
-package com.supriya.util;
+package com.supriya.Util;
 
 import java.util.Properties;
 
@@ -8,12 +8,11 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-import com.supriya.entity.Student;
+import com.supriya.Entity.Book;
 
 public class HibernateUtil {
-	
+
 	private static SessionFactory sessionFactory;
-	
 	public static SessionFactory getSessionFactory() {
 		
 		if(sessionFactory==null) {
@@ -27,18 +26,16 @@ public class HibernateUtil {
 			p.put(Environment.SHOW_SQL,"true");
 			p.put(Environment.CURRENT_SESSION_CONTEXT_CLASS,"thread");
 			p.put(Environment.HBM2DDL_AUTO,"create-drop");
-			
 			con.setProperties(p);
-			con.addAnnotatedClass(Student.class);
-			
+			con.addAnnotatedClass(Book.class);
 			ServiceRegistry sR=new StandardServiceRegistryBuilder()
-					.applySettings(con.getProperties()).build();
-			
+			.applySettings(con.getProperties()).build();
 			sessionFactory =con.buildSessionFactory(sR);
-		}//end if
-			return sessionFactory;
-						
-	}//end method
+			}//end if
 		
-}//class end
-
+		return sessionFactory;
+		
+	}//end method
+	
+	
+}//end class
