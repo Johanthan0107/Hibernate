@@ -1,4 +1,4 @@
-package com.supriya.Entity;
+package com.joshua.Entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
