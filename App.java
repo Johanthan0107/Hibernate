@@ -3,8 +3,8 @@ package com.joshua;
 import java.util.ArrayList;
 import org.hibernate.Session;
 
-import com.supriya.Entity.Book;
-import com.supriya.Util.HibernateUtil;
+import com.joshuaa.Entity.Book;
+import com.joshua.Util.HibernateUtil;
 
 public class App
 {
