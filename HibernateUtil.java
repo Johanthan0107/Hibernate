@@ -1,4 +1,4 @@
-package com.supriya.Util;
+package com.joshua.Util;
 
 import java.util.Properties;
 
@@ -8,7 +8,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-import com.supriya.Entity.Book;
+import com.joshua.Entity.Book;
 
 public class HibernateUtil {
 
@@ -19,9 +19,9 @@ public class HibernateUtil {
 			Configuration con=new Configuration();
 			Properties p=new Properties();
 			p.put(Environment.DRIVER,"com.mysql.jdbc.Driver");
-			p.put(Environment.URL,"jdbc:mysql://localhost:3306/supriyadb");
+			p.put(Environment.URL,"jdbc:mysql://localhost:3306/joshuadb");
 			p.put(Environment.USER,"root");
-			p.put(Environment.PASS,"Supriya@2246");
+			p.put(Environment.PASS,"joshua@0107");
 			p.put(Environment.DIALECT,"org.hibernate.dialect.MySQL5Dialect");
 			p.put(Environment.SHOW_SQL,"true");
 			p.put(Environment.CURRENT_SESSION_CONTEXT_CLASS,"thread");
