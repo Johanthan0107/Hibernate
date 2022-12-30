@@ -1,4 +1,4 @@
-package com.supriya;
+package com.joshua;
 
 import java.util.ArrayList;
 import org.hibernate.Session;
@@ -14,20 +14,20 @@ public class App
 	 ss.beginTransaction();
 
 	 ArrayList<Book> l=new ArrayList<Book>();
-	 Book b=new Book("Adv_Java","Rechard");
-	 Book b1=new Book("Hibernate","Sathish");
-	 Book b2=new Book("Spring_Boot","Nandha Kumar");
-	 Book b3=new Book("Core_Java","Lavanya");
+	 Book b=new Book("Adv_Java","Innu");
+	 Book b1=new Book("Hibernate","John");
+	 Book b2=new Book("Spring_Boot","Joshua");
+	 Book b3=new Book("Core_Java","Kanna");
 
 	 l.add(b); l.add(b1); l.add(b2); l.add(b3);
 	 // save the book objects
 	 l.forEach(n->ss.save(n));
 	 //do changes
-	 b2.setAuthor("Ram");
+	 b2.setAuthor("Rishi");
 	 // update the Book object
 	 ss.saveOrUpdate(b2);
 	 
-	 b.setAuthor("Ravi");
+	 b.setAuthor("Zion");
 	 // update the Book object
 	 ss.saveOrUpdate(b);
 
